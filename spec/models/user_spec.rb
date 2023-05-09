@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   
   describe 'Validations' do
     before do
-      @user = User.new(name: "Tara", email: "t@t.com", password: "password", password_confirmation: "password")
+      @user = User.new(first_name: "Tara", last_name: "MacKinnon", email: "t@t.com", password: "password", password_confirmation: "password")
     end
 
     it "is valid with valid attributes" do
@@ -29,7 +29,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to_not be_empty
     end
 
-
+    it "is not valid when email is already in db" do
+      @user_a = User.create(first_name: "Tara", last_name: "MacKinnon", email: "t@t.com", password: "password", password_confirmation: "password")
+      @user_b = (first_name: "Penny", last_name: "Lane", email: "t@t.com", password: "password", password_confirmation: "password")
+      expect(@user.errors.full_messages).to_not be_empty
+    end
 
   end
 
