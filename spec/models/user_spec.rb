@@ -59,7 +59,48 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 4 characters)")
     end
 
-
   end
 
+  describe '.authenticate_with_credentials' do
+    before do
+      @user2 = User.create(first_name: "Tara", email: "t@t.com", password: "password", password_confirmation: "password", last_name: "MacKinnon")
+    end
+
+    it "aunthenticates and returns a user if crendentials match exactly" do
+      email = "t@t.com"
+      password = "password"
+      @user3 = User.authenticate_with_credentials(email, password)
+      expect(@user2).to eq(@user3)
+    end
+
+    it "returns nil if email is not authenticated" do
+      email = "a@a.com"
+      password = "password"
+      @user3 = User.authenticate_with_credentials(email, password)
+      expect(@user2).to_not eq(@user3)
+    end
+
+    it "returns nil if password is not authenticated" do
+      email = "t@t.com"
+      password = "PassWoRd"
+      @user3 = User.authenticate_with_credentials(email, password)
+      expect(@user2).to_not eq(@user3)
+    end
+
+    it "aunthenticates and returns a user if email has whitespace around it but matches the crendentials" do
+      email = " t@t.com "
+      password = "password"
+      @user3 = User.authenticate_with_credentials(email, password)
+      expect(@user2).to eq(@user3)
+    end
+
+    it "aunthenticates and returns a user if email has different cases but still matches" do
+      email = "T@T.com"
+      password = "password"
+      @user3 = User.authenticate_with_credentials(email, password)
+      expect(@user2).to eq(@user3)
+    end
+
+
+  end
 end
