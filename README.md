@@ -2,8 +2,15 @@
 
 A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
 
-## ExampleScreenshots
-[]
+## Examples
+!["home page"](https://github.com/tmackinnon/jungle-rails/blob/master/screenshots/Home%20Page.png?raw=true)
+
+!["category"](https://github.com/tmackinnon/jungle-rails/blob/master/screenshots/Category-Soldout-Badge.png?raw=true)
+
+!["cart order"](https://github.com/tmackinnon/jungle-rails/blob/master/screenshots/Cart-Order.png?raw=true)
+
+!["admin page"](https://github.com/tmackinnon/jungle-rails/blob/master/screenshots/Admin-Categories.png?raw=true)
+
 
 ## Setup
 
