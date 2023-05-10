@@ -10,11 +10,7 @@
   </div>
 
   <h3>Order Details</h3>
-  <% if @current_user %>
-  <h5>Email: <%= @current_user.email %></h5>
-  <% else %>
-  <h5></h5>
-  <% end %>
+  <h5>Email: <%= @order.email %></h5>
 
   <div class="panel panel-default items">
       <table class="table table-bordered">
